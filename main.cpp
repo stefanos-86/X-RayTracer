@@ -93,13 +93,13 @@ int main(void) {
     xrt::Mesh head(objectFile);
     objectFile.close();
 
-    //Skull model taken at https://free3d.com/3d-model/skull-v3--785914.html
-    // The site said "personal use license", but I could not find the terms.
-    // Assuming it is https://free3d.com/royalty-free-license, then I can't
-    // add the object to the repository as per 7.b.
-    // I had to recreate the repo - will need to replace it with my own model.
+    //  Special thanks to https://design.tutsplus.com/articles/sculpt-model-and-texture-a-low-poly-skull-in-blender--cg-7
     objectFile.open("./samples/skull.obj");
     xrt::Mesh skull(objectFile);
+    objectFile.close();
+
+    objectFile.open("./samples/spine.obj");
+    xrt::Mesh spine(objectFile);
     objectFile.close();
 
     objectFile.open("./samples/brain.obj");
@@ -108,7 +108,7 @@ int main(void) {
 
 
 
-    std::vector<xrt::Mesh*> stuff = {&head, &skull, &brain};
+    std::vector<xrt::Mesh*> stuff = {&head, &skull, &brain, &spine};
 
     xrt::Film film(256, 256, -1.1, 3.5);
     const xrt::Point emitter{0, 0, 4.1};
