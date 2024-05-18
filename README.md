@@ -24,16 +24,16 @@ But I don't have too much time to spend to play around with code.
 [Suddenly](https://en.wikipedia.org/wiki/Serendipity) I remembered
  that I alredy had an implemetation of the key ray-mesh collision algorithm in [an old project](https://github.com/stefanos-86/CatapultGame).
 
-* I can handle any mesh already. *
+*I can handle any mesh already.*
  
  I used [text based 3D graphics](https://en.wikipedia.org/wiki/Wavefront_.obj_file) before, [Blender](https://www.blender.org/) can export it.
  And I know there is a [text-based graphic format](https://en.wikipedia.org/wiki/Netpbm#File_formats) I came across many years ago. It is extremey simple and [GIMP](https://www.gimp.org/) can open it.
 
- * I can do computer graphics using just * `cin` * and * `cout`.
+*I can do computer graphics using just* `cin` *and* `cout`.
  
  Finally, I realized that faking x-rays allows to cut a lot of big corners: no colors or complex materials, no reflections. If I don't mind a slow run time, no fancy optimizations either.
 
- * All the parts slotted into place. *
+*All the parts slotted into place.*
 
  ## Technicalities
  This project has no dependencies but the C++ standard library.
