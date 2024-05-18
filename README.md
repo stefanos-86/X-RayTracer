@@ -10,7 +10,7 @@ We can produce an x-ray picture.
 
 ![Image mimiking the "Homer Simpson small brain" meme](https://github.com/stefanos-86/X-RayTracer/blob/main/sample_result.png)
 
-The code creates PGM images, but they don't render here. Sorry if the image above is a PNG.
+The code creates PGM images, but they don't render here. Sorry if the image above is a PNG, [here](https://github.com/stefanos-86/X-RayTracer/blob/main/radiology.pgm) is some real output.
 
 Oh, in case [you don't know the meme...](https://duckduckgo.com/?t=ffab&q=Homer+Simpson+brain+xray&iax=images&ia=images)
 
