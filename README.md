@@ -8,7 +8,7 @@ But with a twist: what if, instead of bouncing rays over the objects, we let the
 
 We can produce an x-ray picture.
 
-![Image mimiking the "Homer Simpson small brain" meme](https://github.com/stefanos-86/X-RayTracer/blob/main/https://github.com/stefanos-86/X-RayTracer/blob/main/BlenderExportSettings.png)
+![Image mimiking the "Homer Simpson small brain" meme](https://github.com/stefanos-86/X-RayTracer/blob/main/radiology_256_rotated.pgm)
 [...if you don't know the meme](https://duckduckgo.com/?t=ffab&q=Homer+Simpson+brain+xray&iax=images&ia=images)
 
 ## *Why* is this?
