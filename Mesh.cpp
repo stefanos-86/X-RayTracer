@@ -17,6 +17,7 @@ namespace xrt {
         degenerate(n.isZeroLength())
     {}
 
+    // Numbers "cooked up" until the images looked "just right".
     std::unordered_map<std::string, double> Mesh::materialsLib = {
         {"Material", 100}, // Blender default material.
         {"Muscles", 50},
@@ -24,10 +25,10 @@ namespace xrt {
         {"Brain", 345}
     };
 
-    Mesh::Mesh(std::istream& objFileContent) {
 
+    Mesh::Mesh(std::istream& objFileContent) {
         std::vector<Point> points;
-        points.push_back(Point());  // Indices start from one. Throaway point...
+        points.push_back(Point());  // OBJ indices start from one. Add a "padding" point to match.
 
         std::string line;
         while (std::getline(objFileContent, line))
@@ -42,7 +43,7 @@ namespace xrt {
 
             // Betting that all the points have been found (this should be guaranteed by the OBJ format)
             else if (startsWith(line, "f ")) {
-                std::istringstream ls(line);  // Line Stream.
+                std::istringstream ls(line);
                 char header;
                 int a, b, c;
                 if (!(ls >> header >> a >> b >> c)) { assert(false); }
@@ -64,6 +65,12 @@ namespace xrt {
         }
     }
 
+
+    /* Brute force at its finest. Loop over all the triangles, no exceptions,
+       every time. 
+
+       Some optimization effort (like broad phase collision detection or a BSP)
+       may be advantageous, but there is no time to implement it now.*/
     std::vector<Point> Mesh::rayIntersection(const Ray& R) const{
         std::vector<Point> hits;
         for (const Triangle& face : faces) {
@@ -80,28 +87,20 @@ namespace xrt {
 
  /* Ray-Triangle intersection, recycled from 
   * https://github.com/stefanos-86/CatapultGame/blob/8b4f6a130b8807302f71a5f74a781b1a5ae23b65/VolumeObject.cpp#L23.
+  * with some adaptations.
   * 
-  * Taken from http://geomalgorithms.com/a06-_intersect-2.html#intersect3D_RayTriangle()
-  * 
-  * Can probably be optimized (e. g. pre-compute all the u, v, n) but this version is fast enough.
+  * Originally taken from http://geomalgorithms.com/a06-_intersect-2.html#intersect3D_RayTriangle()
   
-  Copyright 2001 softSurfer, 2012 Dan Sunday
-  This code may be freely used and modified for any purpose 
-  providing that this copyright notice is included with it.
-  SoftSurfer makes no warranty for this code, and cannot be held
-  liable for any real or imagined damage resulting from its use.
-  Users of this code must verify correctness for their application.
- 
-   Input:  a ray R, and a triangle T
-   Output: *I = intersection point (when it exists)
-   Return: -1 = triangle is degenerate (a segment or point)
-            0 =  disjoint (no intersect)
-            1 =  intersect in unique point I1
-            2 =  are in the same plane
+    Copyright 2001 softSurfer, 2012 Dan Sunday
+    This code may be freely used and modified for any purpose 
+    providing that this copyright notice is included with it.
+    SoftSurfer makes no warranty for this code, and cannot be held
+    liable for any real or imagined damage resulting from its use.
+    Users of this code must verify correctness for their application.
 */
 int Mesh::rayIntersection(const Ray& R,
                           const Triangle& T,
-                                Point& I) const  {
+                          Point& I) const  {
 
     /* "Epsilon" small value to check divison underflow. */
     constexpr float SMALL_NUM = 0.00000001;

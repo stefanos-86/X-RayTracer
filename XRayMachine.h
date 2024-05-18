@@ -9,14 +9,14 @@
 
 namespace xrt
 {
+    /** Main object of the exercies, where all the elements are jury-rigged toghether to
+     * produce images.
+    */
     class XRayMachine {
         public:
             void scan(const Point& rayEmitter,
                      const std::vector<Mesh*> objects,
                      Film& film);
-
-        private:
-            float attenuation();
     };
     
 }

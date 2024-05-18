@@ -29,6 +29,7 @@ namespace xrt {
 
     Vector3 Vector3::crossProduct(const Vector3& other) const {
         // Formula from https://en.wikipedia.org/wiki/Cross_product#Mnemonic
+        // ...because I always forget it.
         return Vector3 {
             y * other.z - z * other.y,
             z * other.x - x * other.z,

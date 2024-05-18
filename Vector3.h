@@ -20,7 +20,7 @@ namespace xrt {
         double distance(const Vector3& other) const;
 
     private:
-        double squaredLength() const;
+        double squaredLength() const; // Used internally by other calculations, that not always need the sqrt.
     };
 
     using Point = Vector3;

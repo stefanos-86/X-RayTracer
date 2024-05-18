@@ -52,7 +52,7 @@ static void tests() {
     xrt::Mesh m(testMeshFile);
     testMeshFile.close();
 
-    xrt::Ray noCross_outOfPlane{{0, 0, 2}, {0, 0, 1}};
+    xrt::Ray noCross_outOfPlane{{0, 0, 2}, {1, 0, 1}};
     xrt::Ray cross_trough{{0.5, 0.5, -1}, {0.5, 0.5, 1}};
     xrt::Ray noCross_coplanar{{0, 0, 0}, {0.5, 0.5, 0}};
 
@@ -63,7 +63,6 @@ static void tests() {
         {0, 1, 0}
     };
     int res;
-    /* TODO: check failures here. Images are good, may have a test problem.
     res = m.rayIntersection(noCross_outOfPlane, t, hit);
     assert(res ==  0);
     res = m.rayIntersection(cross_trough, t, hit);
@@ -71,7 +70,7 @@ static void tests() {
     assert(hit.x == 0.5 && hit.y == 0.5 && hit.z == 0);
     res = m.rayIntersection(noCross_coplanar, t, hit);
     assert(res ==  2);
-    */
+
 
     xrt::Ray noCross_farAway{{0, 0, 5}, {0, 0, 50}};
     xrt::Ray cross_holeOnTop{{1, 5, 0}, {1, 0, 0}};
@@ -85,8 +84,8 @@ static void tests() {
 
 int main(void) {
     // Uncomment when debugging.
-     tests();
-     return 0;
+    // tests();
+    // return 0;
 
     // Head taken from a model make with Make Human.
     // https://github.com/makehumancommunity/makehuman/blob/master/LICENSE.md

@@ -40,12 +40,23 @@ namespace xrt {
             */
             Mesh(std::istream& objFileContent);
 
+            /** Returns a list of intersection points between the mesh and R, in no
+             *  particular order.
+            */
             std::vector<Point> rayIntersection(const Ray& R) const;
 
-      
+            /* Ray-Triangle intersection
+
+                Input:  a ray R, and a triangle T
+                Output: *I = intersection point (when it exists)
+                Return: -1 = triangle is degenerate (a segment or point)
+                         0 =  disjoint (no intersect)
+                         1 =  intersect in unique point I1
+                         2 =  are in the same plane
+            */
             int rayIntersection(const Ray& R,
                                 const Triangle& T,
-                                      Point& I) const;
+                                Point& I) const;
 
 
             // There is probably a more correct term and some kind of standard for this
@@ -54,15 +65,18 @@ namespace xrt {
 
           private:
             /** Maps the material name to the shielding strenght.
-             * There may be "cooler" ways than hardcoding, like using the colors
-             * from the actual material.
+             *  There may be "cooler" ways than hardcoding, like using the colors
+             *  from the actual material to represent its resistance to x-rays rather
+             *  than the visible color. This is "just enough" to make things work.
             */
             static std::unordered_map<std::string, double> materialsLib;
 
+            /** True if string starts with prefix - convenience function to read the OBJ file. */
             bool startsWith(const std::string& string, const std::string& prefix) const;
 
             /** Ultra wasteful collection of all the faces, with repeated vertices.
-             *  Takes memory, but this is what I think I have to iterate on. 
+             *  Takes more memory than strictly needed, but keeps the data ready to be
+             *  iterated on, without complicated indirections.
             */
             std::vector<Triangle> faces;
 
