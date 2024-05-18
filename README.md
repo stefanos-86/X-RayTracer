@@ -3,7 +3,7 @@
 ## What is this?
 A simple renderer to take x-rays instead of showing the surface of objects.
 
-This is a very basic implementation, just enough code to get the job done, of [ray tracing](https://en.wikipedia.org/wiki/Ray_tracing_(graphics)).
+This is a very basic implementation, just enough code to get the job done, of [ray tracing](https://en.wikipedia.org/wiki/Ray_tracing_(graphics)). \
 But with a twist: what if, instead of bouncing rays over the objects, we let them go all the way trough?
 
 We can produce an x-ray picture.
@@ -26,7 +26,7 @@ But I don't have too much time to spend to play around with code.
 
 *I can handle any mesh already.*
  
- I used [text based 3D graphics](https://en.wikipedia.org/wiki/Wavefront_.obj_file) before, [Blender](https://www.blender.org/) can export it.
+ I used [text based 3D graphics](https://en.wikipedia.org/wiki/Wavefront_.obj_file) before, [Blender](https://www.blender.org/) can export it. \
  And I know there is a [text-based graphic format](https://en.wikipedia.org/wiki/Netpbm#File_formats) I came across many years ago. It is extremey simple and [GIMP](https://www.gimp.org/) can open it.
 
 *I can do computer graphics using just* `cin` *and* `cout`.
@@ -40,7 +40,7 @@ But I don't have too much time to spend to play around with code.
 
  It should be possible to build it out of the box with [CMake](https://cmake.org): `cmake . && make`.
 
-It is also very rough, and not intended for any real use.
+It is also very rough, and not intended for any real use. \
 The rendering parameters are hardcoded right in the main function (...did I mention that I don't have time to play around, yet?).
 
 The code structure mirrors the high-level idea of ray tracing, simulating the light movement
