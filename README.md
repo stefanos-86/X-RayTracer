@@ -18,7 +18,7 @@ Oh, in case [you don't know the meme...](https://duckduckgo.com/?t=ffab&q=Homer+
 Because it is easier that creating a real ray tracing renderer, but the "meat" of the algorithm is
  still the same.
 
-I wanted to create a ray tracing renderer for practice, for a long time.
+I wanted to create a ray tracing renderer for practice, for a long time. \
 But I don't have too much time to spend to play around with code.
 
 [Suddenly](https://en.wikipedia.org/wiki/Serendipity) I remembered
