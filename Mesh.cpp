@@ -7,6 +7,16 @@
 
 namespace xrt {
 
+    Triangle::Triangle(const Point& A,
+                       const Point& B,
+                       const Point&  C) :
+        A(A), B(B), C(C),
+        u(B - A),
+        v(C - A),
+        n(u.crossProduct(v)),
+        degenerate(n.isZeroLength())
+    {}
+
     std::unordered_map<std::string, double> Mesh::materialsLib = {
         {"Material", 100}, // Blender default material.
         {"Muscles", 50},
@@ -42,7 +52,6 @@ namespace xrt {
                     points.at(b),
                     points.at(c)
                 };
-                t.computeGeometry();
                 faces.emplace_back(t);
             }
 
@@ -68,13 +77,6 @@ namespace xrt {
     }
 
 
-void Triangle::computeGeometry() {
-    u = B - A;
-    v = C - A;
-    n = u.crossProduct(v);
-
-    degenerate = n.isZeroLength();
-}
 
  /* Ray-Triangle intersection, recycled from 
   * https://github.com/stefanos-86/CatapultGame/blob/8b4f6a130b8807302f71a5f74a781b1a5ae23b65/VolumeObject.cpp#L23.

@@ -11,10 +11,9 @@ namespace xrt {
         z(z),
         extent(extent),
         pixels(x_resolution * y_resolution, 0)
-    {
-    }
+    { }
 
-    void Film::set(const FilmCoordinate x, const FilmCoordinate y, Intensity i) {
+    void Film::expose(const FilmCoordinate x, const FilmCoordinate y, Intensity i) {
         pixels.at(indexOf(x, y)) = i;
     }
 
@@ -32,7 +31,12 @@ namespace xrt {
 
     }
 
-    Point Film::centerOfPixel(const FilmCoordinate x, const FilmCoordinate y) const {
+    Point Film::positionsOfPixel(const FilmCoordinate x, const FilmCoordinate y) const {
+        /* The point (0, 0) is where the Z axis pierces the screen. So (x, y) has 
+           to be translated by half the amount of pixels (..._resolution / 2).
+           Then such position can be multiplied by the dimension of a pixel along the
+           side (extent / resolution) to find the place where the pixel is. */
+
         return Point{ // cast to double beause may go negative
             ((double) x - (double) x_resolution / 2) * extent / x_resolution,
             ((double) y - (double) y_resolution / 2) * extent / y_resolution,

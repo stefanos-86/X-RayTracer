@@ -10,7 +10,7 @@ namespace xrt {
     
     for (size_t x = 0; x < film.x_resolution ; ++x)
         for (size_t y = 0; y < film.y_resolution ; ++y) {
-            Ray R(rayEmitter, film.centerOfPixel(x, y));
+            Ray R(rayEmitter, film.positionsOfPixel(x, y));
             // std::cout << "    " << R.end.x << " " << R.end.y << " " << R.end.z << " " << std::endl;
             
             double intensity = 255;
@@ -54,7 +54,7 @@ namespace xrt {
            // std::cout << "  " << intensity << std::endl;
            if (intensity < 0)
             intensity = 0;
-             film.set(x, y, 255 - (Intensity) intensity);
+             film.expose(x, y, 255 - (Intensity) intensity);
         }
 
     }

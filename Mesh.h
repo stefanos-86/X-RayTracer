@@ -10,19 +10,26 @@
 
 namespace xrt {
 
+    /** Collection of data for a triangle ABC.
+     * 
+     *  Edges, normal vectors and degenerate state (triangle of no thickness, A, B and C aligned)
+     *  cached to save some repeated computation.
+    */
     struct Triangle {
-        Point A;
-        Point B;
-        Point C;
+        Triangle(const Point& A,
+                 const Point& B,
+                 const Point& C);
+
+        const Point A;
+        const Point B;
+        const Point C;
 
         // Edges and normal.
-        Vector3 u;
-        Vector3 v;
-        Vector3 n;
+        const Vector3 u;
+        const Vector3 v;
+        const Vector3 n;
 
-        bool degenerate;
-
-        void computeGeometry();
+        const bool degenerate;
     };
     
     /** Representation of a mesh, "tuned" for what this project needs. */
