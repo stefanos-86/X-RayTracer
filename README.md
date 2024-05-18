@@ -9,7 +9,10 @@ But with a twist: what if, instead of bouncing rays over the objects, we let the
 We can produce an x-ray picture.
 
 ![Image mimiking the "Homer Simpson small brain" meme](https://github.com/stefanos-86/X-RayTracer/blob/main/sample_result.png)
-[...if you don't know the meme](https://duckduckgo.com/?t=ffab&q=Homer+Simpson+brain+xray&iax=images&ia=images)
+
+The code creates PGM images, but they don't render here. Sorry if the image above is a PNG.
+
+Oh, in case [you don't know the meme...](https://duckduckgo.com/?t=ffab&q=Homer+Simpson+brain+xray&iax=images&ia=images)
 
 ## *Why* is this?
 Because it is easier that creating a real ray tracing renderer, but the "meat" of the algorithm is
